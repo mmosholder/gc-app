@@ -12,7 +12,7 @@ class SurvivorUserPick extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'team_id', 'match_id', 'week_id'
+        'team_name', 'user_id', 'team_id', 'match_id', 'week_id'
     ];
 
     protected $dates = [

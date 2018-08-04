@@ -1,4 +1,6 @@
 let mix = require('laravel-mix');
+const StyleLintPlugin = require("stylelint-webpack-plugin");
+
 
 /*
  |--------------------------------------------------------------------------
@@ -10,6 +12,44 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+
+mix.webpackConfig({
+    module: {
+        rules: [
+            {
+                test: /\.(js|vue)$/,
+                exclude: /node_modules/,
+                enforce: "pre",
+                loader: "eslint-loader",
+                options: {
+                    formatter: require("eslint-friendly-formatter"),
+                    fix: true
+                }
+            }
+        ]
+    },
+    plugins: [
+        new StyleLintPlugin({
+            configFile: ".stylelintrc",
+            context: "resources/assets/sass",
+            files: [
+                "components/*.scss",
+                "global/*.scss",
+                "layout/*.scss",
+                "mixins/*.scss",
+                "typography/*.scss",
+                "app.scss"
+            ],
+            syntax: "scss",
+            failOnError: false,
+            quiet: false
+        })
+    ],
+    output: {
+        publicPath: "/",
+        chunkFilename: "js/[name].js"
+    }
+});
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');

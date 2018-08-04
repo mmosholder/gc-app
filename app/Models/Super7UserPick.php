@@ -12,6 +12,7 @@ class Super7UserPick extends Model
      * @var array
      */
     protected $fillable = [
+        'team_name',
         'user_id',
         'match_1_id',
         'pick_1_id',
