@@ -1,79 +1,62 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ app()->getLocale() }}">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="application-name" content="{{ config('app.name', 'Laravel') }}">
+
+    <meta name="description" content="">
+
+    <!-- For IE 10 and below -->
+    <!-- Place favicon.ico in the root directory - no tag necessary -->
+
+    <!-- For IE 11, Chrome, Firefox, Safari, Opera -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="icon" type="image/png" href="/images/32x32-favicon.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/16x16-favicon.png" sizes="16x16" />
+
+    <!-- Add to Home Screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="App Title">
+
+    <!-- Touch Icons -->
+    <!-- In most cases, one 180×180px touch icon in the head is enough -->
+    <link rel="apple-touch-icon" href="/images/180x180-app-icon.png">
+
+    <meta name="theme-color" content="#B1CE70">
+
+    <!-- Add to home screen -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- More info: https://developer.chrome.com/multidevice/android/installtohomescreen -->
+
+    <!-- Define your web page as a web app -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Homescreen Icon  -->
+    <link rel="icon" sizes="192x192" href="/images/192x192-app-icon.png">
+
+    <!-- IE10: Disable link highlighting upon tap (https://blogs.windows.com/buildingapps/2012/11/15/adapting-your-webkit-optimized-site-for-internet-explorer-10/) -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <meta name="application-name" content="{{ config('app.name', 'Laravel') }}">
+    <meta name="msapplication-tooltip" content="">
+    <meta name="msapplication-starturl" content="http://example.com/index.html?pinned=true">
+    <meta name="msapplication-navbutton-color" content="#B1CE70">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+  <div id="app">
+    <app></app>
+  </div>
+  <!-- Scripts -->
+  <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

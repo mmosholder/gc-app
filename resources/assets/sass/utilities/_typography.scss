@@ -1,0 +1,281 @@
+// Typography base text & title classes
+// ------------------------------------
+
+.title {
+
+  &-1 {
+    @include font-smoothing;
+    font-family: $junior;
+    $map: (
+      576px: 62px,
+      768px: 90px,
+      1025px: 125px,
+      1180px: 150px
+    );
+    line-height: 0.9;
+    @include poly-fluid-sizing("font-size", $map);
+    font-weight: $regular;
+  }
+
+  &-2 {
+    @include font-smoothing;
+    font-family: $heavy;
+    $map: (
+      576px: 18px,
+      768px: 20px
+    );
+    line-height: 1.15;
+    @include poly-fluid-sizing("font-size", $map);
+    font-weight: $regular;
+    letter-spacing: 0.95px;
+  }
+
+  &-3 {
+    @include font-smoothing;
+    font-family: $heavy;
+    font-size: 15px;
+    line-height: 1.13;
+    font-weight: $regular;
+    letter-spacing: 0.95px;
+  }
+
+  &-4 {
+    @include font-smoothing;
+    font-family: $junior;
+    $map: (
+      576px: 62px,
+      768px: 77px,
+      1025px: 110px,
+      1180px: 140px
+    );
+    line-height: 0.9;
+    @include poly-fluid-sizing("font-size", $map);
+    font-weight: $regular;
+  }
+}
+
+.text {
+
+  &-22 {
+    @include font-smoothing;
+    font-family: $serif;
+    $map: (
+      576px: 19px,
+      768px: 22px
+    );
+    line-height: 1.55;
+    @include poly-fluid-sizing("font-size", $map);
+    font-weight: $regular;
+
+    a {
+      color: $text-aqua;
+      text-decoration: none;
+      @include pretty-text-underline($text-aqua, 1);
+      transition: color 240ms $t-1;
+
+      &:hover,
+      &:focus {
+        color: darken($text-aqua, 15%);
+        transition: color 240ms $t-1;
+      }
+    }
+  }
+
+  &-20 {
+    @include font-smoothing;
+    font-family: $serif;
+    $map: (
+      576px: 19px,
+      768px: 20px
+    );
+    line-height: 1.4;
+    @include poly-fluid-sizing("font-size", $map);
+    font-weight: $regular;
+
+    a {
+      color: $text-aqua;
+      text-decoration: none;
+      @include pretty-text-underline($text-aqua, 1);
+      transition: color 240ms $t-1;
+
+      &:hover,
+      &:focus {
+        color: darken($text-aqua, 15%);
+        transition: color 240ms $t-1;
+      }
+    }
+  }
+}
+
+// Link Styles
+// -------------------------
+
+.link {
+
+  &-arrow {
+    color: $text-blue-light;
+    position: relative;
+    transition: color 240ms $t-1;
+
+    svg {
+      position: absolute;
+      height: 16px;
+      width: 29px;
+      top: pxem(1);
+      right: pxem(-35);
+      transition: right 100ms $t-1;
+      display: none;
+
+      @include mq($from: $breakpoint-small) {
+        display: inline;
+      }
+
+      path {
+        fill: $fill-blue-light;
+      }
+    }
+
+    @include mq($from: $breakpoint-small) {
+
+      svg {
+        display: inline;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      color: darken($text-blue-light, 20%);
+
+      svg {
+        right: pxem(-45);
+
+        path {
+          fill: darken($fill-blue-light, 15%);
+        }
+      }
+    }
+  }
+
+  &-paragraph {
+    color: $text-green-dark;
+    @include pretty-text-underline($text-green-dark, 1);
+
+    &:hover,
+    &:focus {
+      color: darken($text-green-dark, 20%);
+    }
+  }
+
+  &-underline {
+    @include pretty-text-underline($text-blue-light, 1);
+  }
+
+  &-footer {
+    color: $text-white;
+
+    &:hover,
+    &:focus {
+      color: darken($text-white, 15%);
+    }
+  }
+
+  &-nav {
+    text-decoration: none;
+    position: relative;
+    padding: pxem(5) pxem(10) pxem(10) pxem(10);
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 45%;
+      transform: translateX(-45%);
+      width: pxem(30);
+      height: pxem(5);
+      background-color: $fill-pink;
+      opacity: 0;
+      transition: opacity 240ms $t-1;
+    }
+  }
+
+  &-mobile-nav {
+    text-decoration: none;
+    position: relative;
+    padding: pxem(10) 0;
+  }
+
+  &-title {
+    color: $text-blue-dark;
+
+    &:active {
+      color: $text-blue-dark;
+    }
+
+    &:hover,
+    &:focus {
+      color: lighten($text-blue-dark, 15%);
+    }
+  }
+}
+
+// Typography Emphasis and Styling
+// -------------------------
+
+.regular,
+.normal {
+  font-weight: $regular;
+}
+
+.bold {
+  font-weight: $bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+.decoration-underline {
+  text-decoration: underline;
+}
+
+.decoration-line-through {
+  text-decoration: line-through;
+}
+
+// Typography Alignment
+// -------------------------
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// List styles
+// -------------------------
+// Unstyled keeps list items block level,
+// just removes default browser padding and list-style
+
+.list-unstyled {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-flex {
+  display: flex;
+}

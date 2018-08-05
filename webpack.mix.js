@@ -1,6 +1,5 @@
-let mix = require('laravel-mix');
+let mix = require("laravel-mix");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
-
 
 /*
  |--------------------------------------------------------------------------
@@ -22,8 +21,7 @@ mix.webpackConfig({
                 enforce: "pre",
                 loader: "eslint-loader",
                 options: {
-                    formatter: require("eslint-friendly-formatter"),
-                    fix: true
+                    formatter: require("eslint-friendly-formatter")
                 }
             }
         ]
@@ -34,10 +32,9 @@ mix.webpackConfig({
             context: "resources/assets/sass",
             files: [
                 "components/*.scss",
-                "global/*.scss",
-                "layout/*.scss",
-                "mixins/*.scss",
-                "typography/*.scss",
+                "base/*.scss",
+                "helpers/*.scss",
+                "utilities/*.scss",
                 "app.scss"
             ],
             syntax: "scss",
@@ -51,5 +48,7 @@ mix.webpackConfig({
     }
 });
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js("resources/assets/js/app.js", "public/js").sass(
+    "resources/assets/sass/app.scss",
+    "public/css"
+);
